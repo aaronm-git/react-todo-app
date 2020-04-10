@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light shadow-sm mb-3">
       <button
         className="navbar-toggler"
         type="button"
@@ -15,15 +15,14 @@ function Nav() {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-
       <div className="collapse navbar-collapse" id="navMenu">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
+        <ul className="navbar-nav w-100 justify-content-center">
+          <li className="nav-item mx-md-4">
             <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item mx-sm-4">
             <Link className="nav-link" to="/about">
               About
             </Link>

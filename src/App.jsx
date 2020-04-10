@@ -7,6 +7,7 @@ import About from "./components/pages/About";
 import AddTodo from "./components/AddTodo";
 import { v1 as uuidv1 } from "uuid";
 import axios from "axios";
+import Tilt from "react-tilt";
 
 class App extends Component {
   state = { todos: [] };
@@ -54,41 +55,38 @@ class App extends Component {
     let HTML;
     if (this.state.todos.length) {
       HTML = () => (
-        <React.Fragment>
+        <div className="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
           <div className="mt-4">
             <AddTodo addTodo={this.addTodo} />
           </div>
-          <div className="list-group shadow">
+          <Tilt
+            className="list-group shadow Tilt"
+            options={{ max: 10, scale: 1.03, perspective: 2000, speed: 400 }}
+          >
             <Todos
               todos={this.state.todos}
               toggleComplete={this.toggleComplete}
               delTodo={this.delTodo}
             />
-          </div>
-        </React.Fragment>
+          </Tilt>
+        </div>
       );
     } else
       HTML = () => (
-        <React.Fragment>
+        <div className="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
           <div className="mt-4">
             <AddTodo addTodo={this.addTodo} />
           </div>
           <div className="text-center">
             <p className="text-muted">No Dotos Yet!</p>
           </div>
-        </React.Fragment>
+        </div>
       );
     return (
       <Router>
-        <div className="row">
-          <div className="col">
-            <Header />
-          </div>
-        </div>
-        <div className="col">
-          <Route exact path="/" render={(props) => HTML()} />
-          <Route path="/about" component={About} />
-        </div>
+        <Header />
+        <Route exact path="/" render={(props) => HTML()} />
+        <Route path="/about" component={About} />
       </Router>
     );
   }
