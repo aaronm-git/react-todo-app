@@ -44,11 +44,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=4")
-      .then((res) => {
-        this.setState({ todos: res.data });
-      });
+    axios.get("https://jsonplaceholder.typicode.com/todos?_limit=4").then((res) => {
+      this.setState({ todos: res.data });
+    });
   }
 
   render() {
@@ -59,15 +57,8 @@ class App extends Component {
           <div className="mt-4">
             <AddTodo addTodo={this.addTodo} />
           </div>
-          <Tilt
-            className="list-group shadow Tilt"
-            options={{ max: 10, scale: 1.03, perspective: 2000, speed: 400 }}
-          >
-            <Todos
-              todos={this.state.todos}
-              toggleComplete={this.toggleComplete}
-              delTodo={this.delTodo}
-            />
+          <Tilt className="list-group shadow Tilt" options={{ max: 10, scale: 1.03, perspective: 2000, speed: 400 }}>
+            <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} delTodo={this.delTodo} />
           </Tilt>
         </div>
       );
@@ -85,8 +76,8 @@ class App extends Component {
     return (
       <Router>
         <Header />
-        <Route exact path="/" render={(props) => HTML()} />
-        <Route path="/about" component={About} />
+        <Route exact path="/react-todo-app" render={(props) => HTML()} />
+        <Route exact path="/react-todo-app/about" component={About} />
       </Router>
     );
   }
